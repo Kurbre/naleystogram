@@ -3,7 +3,7 @@ import { AuthLoginForm } from '@/features/auth-login'
 
 export default function LoginPage() {
 	return (
-		<section className='container flex justify-between mt-9 sm:mt-35 flex-wrap xm:flex-nowrap'>
+		<section className='container flex justify-between mt-9 sm:mt-35 flex-wrap md:flex-nowrap'>
 			<AuthAbout />
 			<AuthLoginForm />
 		</section>

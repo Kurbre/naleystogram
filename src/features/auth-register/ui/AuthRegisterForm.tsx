@@ -41,7 +41,7 @@ export default function AuthRegisterForm() {
 
 	return (
 		<form
-			className='shadow-2xl px-3 py-4 rounded-lg w-full md:w-[35%] flex flex-col gap-4 mt-[390px] xm:mt-0'
+			className='shadow-2xl px-3 py-4 rounded-lg w-full md:w-[35%] flex flex-col gap-4 mt-[290px] md:mt-0'
 			onSubmit={handleSubmit(submitHandler)}
 		>
 			<h3 className='text-center text-xl'>Регистрация</h3>

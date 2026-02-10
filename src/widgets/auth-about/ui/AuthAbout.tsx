@@ -14,15 +14,15 @@ export default function AuthAbout() {
 				scrambled it to make a type specimen book.
 			</p>
 			<div className='relative mt-10'>
-				<div className='absolute w-42 h-50 sm:w-64 sm:h-80 rounded-2xl overflow-hidden shadow-xl -rotate-6 z-10 border-4 border-white'>
+				<div className='absolute w-42 h-50 md:w-59 md:h-75 rounded-2xl overflow-hidden shadow-xl -rotate-6 z-10 border-4 border-white'>
 					<Image src={imageOne} alt='Image one' fill className='object-cover' />
 				</div>
 
-				<div className='absolute w-42 h-50 sm:w-64 sm:h-80 rounded-2xl overflow-hidden shadow-2xl rotate-6 left-40 sm:left-60 top-10 z-20 border-4 border-white'>
+				<div className='absolute w-42 h-50 md:w-59 md:h-75 rounded-2xl overflow-hidden shadow-2xl rotate-6 left-40 sm:left-60 top-10 z-20 border-4 border-white'>
 					<Image src={imageTwo} alt='Image two' fill className='object-cover' />
 				</div>
 
-				<div className='absolute w-42 h-50 sm:w-64 sm:h-80 rounded-2xl overflow-hidden shadow-2xl -rotate-2 left-20 sm:left-30 -top-5 z-30 border-4 border-white'>
+				<div className='absolute w-42 h-50 md:w-59 md:h-75 rounded-2xl overflow-hidden shadow-2xl -rotate-2 left-20 sm:left-30 -top-5 z-30 border-4 border-white'>
 					<Image
 						src={imageThree}
 						alt='Image three'
