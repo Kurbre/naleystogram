@@ -2,11 +2,20 @@ import { PropsWithChildren } from 'react'
 import type { Metadata } from 'next'
 import cn from 'classnames'
 import { Providers } from './providers'
-import { Inter } from 'next/font/google'
+import { Inter, Kanit } from 'next/font/google'
 import './globals.css'
 
-const interSans = Inter({
-	variable: '--font-inter-sans',
+const inter = Inter({
+	subsets: ['latin', 'cyrillic'],
+	variable: '--font-inter',
+	display: 'swap',
+	weight: ['400', '500', '600', '700', '800']
+})
+
+const kanit = Kanit({
+	subsets: ['latin'],
+	variable: '--font-kanit',
+	display: 'swap',
 	weight: ['400', '500', '600', '700', '800']
 })
 
@@ -18,7 +27,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
 	return (
 		<html lang='ru'>
-			<body className={cn(interSans.variable)}>
+			<body className={cn(inter.variable, kanit.variable)}>
 				<Providers>{children}</Providers>
 			</body>
 		</html>
