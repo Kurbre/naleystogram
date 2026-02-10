@@ -1,10 +1,14 @@
 'use client'
-import {Input} from '@/shared/ui/input'
-import {Button} from '@/shared/ui/button'
+import { Input } from '@/shared/ui/input'
+import { Button } from '@/shared/ui/button'
 import Link from 'next/dist/client/link'
-import {useForm} from 'react-hook-form'
-import {LoginForm, loginSchema} from '../model/login-schema'
-import {zodResolver} from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { LoginForm, loginSchema } from '../model/login-schema'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
+import { fetchLogin } from '../api/fetch-login'
+import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
 
 export default function AuthLoginForm() {
 	const { register, handleSubmit, formState } = useForm<LoginForm>({
@@ -12,8 +16,26 @@ export default function AuthLoginForm() {
 		resolver: zodResolver(loginSchema)
 	})
 
-	const submitHandler = (data: LoginForm) => {
-		console.log(data)
+	const router = useRouter()
+
+	const { mutateAsync } = useMutation({
+		mutationFn: () => fetchLogin(),
+		onSuccess: () => {
+			router.push('/')
+			router.refresh()
+		}
+	})
+
+	const submitHandler = async (data: LoginForm) => {
+		await toast.promise(mutateAsync, {
+			pending: 'Проверка данных',
+			success: 'Вы успешно вошли в аккаунт',
+			error: {
+				render({ data }: { data: string }) {
+					return data
+				}
+			}
+		})
 	}
 
 	return (
@@ -23,7 +45,7 @@ export default function AuthLoginForm() {
 		>
 			<h3 className='text-center text-xl'>Авторизация</h3>
 			<Input
-				placeholder='Email, номер телефона, логин'
+				label='Email, номер телефона, логин'
 				error={formState.errors.login?.message}
 				{...register('login')}
 			/>

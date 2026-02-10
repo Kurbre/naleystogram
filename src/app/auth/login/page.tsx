@@ -1,5 +1,5 @@
 import { AuthAbout } from '@/widgets/auth-about'
-import { AuthLoginForm } from '@/widgets/auth-login-form'
+import { AuthLoginForm } from '@/features/auth-login'
 
 export default function LoginPage() {
 	return (

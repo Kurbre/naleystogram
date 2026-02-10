@@ -5,10 +5,11 @@ import { Button } from '@/shared/ui/button'
 import Link from 'next/dist/client/link'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import {
-	RegisterForm,
-	registerSchema
-} from '@/widgets/auth-register-form/model/register-schema'
+import { RegisterForm, registerSchema } from '../model/register-schema'
+import { useMutation } from '@tanstack/react-query'
+import { fetchRegister } from '../api/fetch-register'
+import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
 
 export default function AuthRegisterForm() {
 	const { register, handleSubmit, formState } = useForm<RegisterForm>({
@@ -16,8 +17,26 @@ export default function AuthRegisterForm() {
 		resolver: zodResolver(registerSchema)
 	})
 
-	const submitHandler = (data: RegisterForm) => {
-		console.log(data)
+	const router = useRouter()
+
+	const { mutateAsync } = useMutation({
+		mutationFn: () => fetchRegister(),
+		onSuccess: () => {
+			router.push('/')
+			router.refresh()
+		}
+	})
+
+	const submitHandler = async (data: RegisterForm) => {
+		await toast.promise(mutateAsync, {
+			pending: 'Проверка данных',
+			success: 'Вы успешно создали аккаунт',
+			error: {
+				render({ data }: { data: string }) {
+					return data
+				}
+			}
+		})
 	}
 
 	return (

@@ -1,5 +1,5 @@
 import { AuthAbout } from '@/widgets/auth-about'
-import { AuthRegisterForm } from '@/widgets/auth-register-form'
+import { AuthRegisterForm } from '@/features/auth-register'
 
 export default function RegisterPage() {
 	return (
