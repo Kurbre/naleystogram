@@ -1,0 +1,71 @@
+'use client'
+
+import { Input } from '@/shared/ui/input'
+import { Button } from '@/shared/ui/button'
+import Link from 'next/dist/client/link'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import {
+	RegisterForm,
+	registerSchema
+} from '@/widgets/auth-register-form/model/register-schema'
+
+export default function AuthRegisterForm() {
+	const { register, handleSubmit, formState } = useForm<RegisterForm>({
+		mode: 'onChange',
+		resolver: zodResolver(registerSchema)
+	})
+
+	const submitHandler = (data: RegisterForm) => {
+		console.log(data)
+	}
+
+	return (
+		<form
+			className='shadow-2xl px-3 py-4 rounded-lg w-[35%] flex flex-col gap-4'
+			onSubmit={handleSubmit(submitHandler)}
+		>
+			<h3 className='text-center text-xl'>Регистрация</h3>
+			<Input
+				label='Email'
+				type='email'
+				{...register('email')}
+				error={formState.errors.email?.message}
+			/>
+			<Input
+				label='Логин'
+				type='text'
+				{...register('login')}
+				error={formState.errors.login?.message}
+			/>
+			<Input
+				label='Номер телефона'
+				type='text'
+				{...register('phoneNumber')}
+				error={formState.errors.phoneNumber?.message}
+			/>
+			<Input
+				label='Пароль'
+				type='password'
+				{...register('password')}
+				error={formState.errors.password?.message}
+			/>
+			<Input
+				label='Повторите пароль'
+				type='password'
+				{...register('repeatPassword')}
+				error={formState.errors.repeatPassword?.message}
+			/>
+			<div className='mx-auto'>
+				<Button type='submit'>Зарегестрироваться</Button>
+			</div>
+			<div className='w-[70%] h-px bg-border mx-auto' />
+			<span className='text-sm text-center'>
+				Уже есть аккаунт?
+				<Link href='/auth/login' className='text-link ml-1'>
+					Войти
+				</Link>
+			</span>
+		</form>
+	)
+}
