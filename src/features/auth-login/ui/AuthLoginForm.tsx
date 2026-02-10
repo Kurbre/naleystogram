@@ -1,7 +1,7 @@
 'use client'
 import { Input } from '@/shared/ui/input'
 import { Button } from '@/shared/ui/button'
-import Link from 'next/dist/client/link'
+import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { LoginForm, loginSchema } from '../model/login-schema'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -19,7 +19,7 @@ export default function AuthLoginForm() {
 	const router = useRouter()
 
 	const { mutateAsync } = useMutation({
-		mutationFn: () => fetchLogin(),
+		mutationFn: (data: LoginForm) => fetchLogin(data),
 		onSuccess: () => {
 			router.push('/')
 			router.refresh()
@@ -27,12 +27,12 @@ export default function AuthLoginForm() {
 	})
 
 	const submitHandler = async (data: LoginForm) => {
-		await toast.promise(mutateAsync, {
+		await toast.promise(mutateAsync(data), {
 			pending: 'Проверка данных',
 			success: 'Вы успешно вошли в аккаунт',
 			error: {
-				render({ data }: { data: string }) {
-					return data
+				render({ data }: { data: Error }) {
+					return data.message
 				}
 			}
 		})
@@ -40,7 +40,7 @@ export default function AuthLoginForm() {
 
 	return (
 		<form
-			className='shadow-2xl px-3 py-4 rounded-lg w-[35%] flex flex-col gap-4'
+			className='shadow-2xl px-3 py-4 rounded-lg w-full md:w-[35%] flex flex-col gap-4 mt-[390px] xm:mt-0'
 			onSubmit={handleSubmit(submitHandler)}
 		>
 			<h3 className='text-center text-xl'>Авторизация</h3>

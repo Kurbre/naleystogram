@@ -16,6 +16,7 @@
 	--color-border: var(--border);
 	--color-hover: var(--hover);
 	--color-link: var(--link);
+	--breakpoint-xm: 824px;
 }
 
 @theme inline {

@@ -1,18 +1,16 @@
-export const fetchRegister = async () => {
-	const tempData = {
-		id: '1233fsd',
-		email: 'example@gmail.com',
-		password: '123456',
-		phoneNumber: '+38095749393',
-		login: 'jfsdkfsk'
+import { axiosMain } from '@/shared/utils/axios'
+import { RegisterForm } from '@/features/auth-register/model/register-schema'
+
+export const fetchRegister = async (data: RegisterForm) => {
+	try {
+		const response = await axiosMain.post('/register', {
+			username: data.login,
+			password: data.password,
+			email: data.email
+		})
+
+		return response.data
+	} catch (e) {
+		throw new Error('Ошибка регистрации')
 	}
-
-	return new Promise((resolve, reject) => {
-		const isError = false
-
-		setTimeout(() => {
-			if (isError) reject('Регистрация провалилась')
-			else resolve(tempData)
-		}, 3000)
-	}) as Promise<typeof tempData | string>
 }

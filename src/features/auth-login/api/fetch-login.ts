@@ -1,18 +1,16 @@
-export const fetchLogin = async () => {
-	const tempData = {
-		id: '1233fsd',
-		email: 'example@gmail.com',
-		password: '123456',
-		phoneNumber: '+38095749393',
-		login: 'jfsdkfsk'
+import { axiosMain } from '@/shared/utils/axios'
+import { LoginForm } from '@/features/auth-login/model/login-schema'
+
+export const fetchLogin = async (data: LoginForm) => {
+	try {
+		const response = await axiosMain.post('/login', {
+			username: data.login,
+			password: data.password
+		})
+
+		return response.data
+	} catch (e) {
+		console.log(e)
+		throw new Error('Ошибка авторизации')
 	}
-
-	return new Promise((resolve, reject) => {
-		const isError = false
-
-		setTimeout(() => {
-			if (isError) reject('Авторизация провалилась')
-			else resolve(tempData)
-		}, 3000)
-	}) as Promise<typeof tempData | string>
 }
