@@ -17,7 +17,7 @@ export default function Footer() {
 					Регистрация
 				</Link>
 			</div>
-			<h5 className='text-main font-kanit text-2xl mt-2'>Naleystogram</h5>
+			<h5 className='text-main font-kanit text-xl mt-2'>Naleystogram</h5>
 			<p className='text-xs mb-6'>
 				© Naleystogram LLC 2026.
 				<br />
