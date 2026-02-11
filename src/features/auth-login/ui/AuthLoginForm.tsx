@@ -4,9 +4,9 @@ import { Button } from '@/shared/ui/button'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { LoginForm, loginSchema } from '../model/login-schema'
+import { fetchLogin } from '../api/fetch-login'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
-import { fetchLogin } from '../api/fetch-login'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
 
@@ -40,7 +40,7 @@ export default function AuthLoginForm() {
 
 	return (
 		<form
-			className='shadow-2xl px-3 py-4 rounded-lg w-full md:w-[35%] flex flex-col gap-4 mt-[290px] md:mt-0'
+			className='shadow-2xl px-3 py-4 rounded-lg w-full h-fit md:w-[35%] flex flex-col gap-4 mt-[190px] md:mt-0'
 			onSubmit={handleSubmit(submitHandler)}
 		>
 			<h3 className='text-center text-xl'>Авторизация</h3>

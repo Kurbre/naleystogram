@@ -2,7 +2,7 @@
 
 import { Input } from '@/shared/ui/input'
 import { Button } from '@/shared/ui/button'
-import Link from 'next/dist/client/link'
+import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { RegisterForm, registerSchema } from '../model/register-schema'

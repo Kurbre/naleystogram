@@ -4,6 +4,7 @@ import cn from 'classnames'
 import { Providers } from './providers'
 import { Inter, Kanit } from 'next/font/google'
 import './globals.css'
+import { Footer } from '@/widgets/footer'
 
 const inter = Inter({
 	subsets: ['latin', 'cyrillic'],
@@ -28,7 +29,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
 	return (
 		<html lang='ru'>
 			<body className={cn(inter.variable, kanit.variable)}>
-				<Providers>{children}</Providers>
+				<Providers>
+					<main>{children}</main>
+					<Footer />
+				</Providers>
 			</body>
 		</html>
 	)

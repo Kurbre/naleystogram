@@ -13,7 +13,7 @@ export default function AuthAbout() {
 				since the 1500s, when an unknown printer took a galley of type and
 				scrambled it to make a type specimen book.
 			</p>
-			<div className='relative mt-10'>
+			<div className='relative mt-10 pb-[100px] md:pb-[350px]'>
 				<div className='absolute w-42 h-50 md:w-59 md:h-75 rounded-2xl overflow-hidden shadow-xl -rotate-6 z-10 border-4 border-white'>
 					<Image src={imageOne} alt='Image one' fill className='object-cover' />
 				</div>
