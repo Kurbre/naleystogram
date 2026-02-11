@@ -40,7 +40,7 @@ export default function AuthLoginForm() {
 
 	return (
 		<form
-			className='shadow-2xl px-3 py-4 rounded-lg w-full h-fit md:w-[35%] flex flex-col gap-4 mt-[190px] md:mt-0'
+			className='shadow-2xl px-3 py-4 rounded-lg w-full h-fit md:w-[35%] flex flex-col gap-4 mt-47.5 md:mt-0'
 			onSubmit={handleSubmit(submitHandler)}
 		>
 			<h3 className='text-center text-xl'>Авторизация</h3>
@@ -62,7 +62,7 @@ export default function AuthLoginForm() {
 			<span className='text-sm text-center'>
 				У вас уже есть аккаунт?
 				<Link href='/auth/register' className='text-link ml-1'>
-					Зарегестрировться
+					Зарегестрироваться
 				</Link>
 			</span>
 		</form>
