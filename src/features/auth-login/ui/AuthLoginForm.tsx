@@ -18,7 +18,7 @@ export default function AuthLoginForm() {
 
 	const router = useRouter()
 
-	const { mutateAsync } = useMutation({
+	const { mutateAsync, data } = useMutation({
 		mutationFn: (data: LoginForm) => fetchLogin(data),
 		onSuccess: () => {
 			router.push('/')
